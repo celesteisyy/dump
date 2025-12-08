@@ -1,130 +1,143 @@
 
+# PPC框架
 
-## Structure
-```
-Data Security
-└── SIEM Framework
-    ├── 1) Security Data Collection
-    │    ├── Log Sources
-    │    │    ├── Network: Firewall, IPS/IDS, DNS, VPN
-    │    │    ├── Cloud: CloudTrail, VPC Flow Logs, Config, GuardDuty
-    │    │    ├── Endpoints: EDR, OS logs, Sysmon
-    │    │    ├── Applications: API gateway, Web Server, DB audit
-    │    │    ├── Identity: IAM logs, SSO login, Directory events
-    │    ├── Data Pipeline
-    │    │    ├── Agent vs Agentless (Syslog, FluentBit…)
-    │    │    ├── Streaming ingestion (Kafka/Kinesis)
-    │    │    ├── Schema normalization (ECS, OCSF)
-    │    │    └── Reliable delivery & retry
-    │    ├── Security Requirements
-    │    │    ├── Tamper-proof logs (immutability w/ object lock)
-    │    │    ├── Minimum retention compliance (90/180/365 days)
-    │    │    └── Zero data loss (buffering + ACK)
-    │
-    ├── 2) Security Data Protection
-    │    ├── Access Control
-    │    │    ├── RBAC + ABAC
-    │    │    ├── Least privilege for analysts
-    │    ├── Encryption
-    │    │    ├── In transit (TLS 1.2+)
-    │    │    ├── At rest (SSE-KMS or BYOK/CMK)
-    │    ├── Data Quality & Governance
-    │    │    ├── Data catalog (log type, owner, schema version)
-    │    │    ├── Masking / Tokenization for PII
-    │    │    ├── Hashing Trick for high-cardinality identifiers
-    │    ├── Compliance & Auditability
-    │         ├── Immutable logs + versioning
-    │         ├── Encryption key lifecycle control
-    │         └── Retention policy enforcement
-    │
-    ├── 3) Security Data Analytics
-    │    ├── Alerting
-    │    │    ├── Detection rules (MITRE ATT&CK mapping)
-    │    │    ├── Statistical alerts (baseline anomalies)
-    │    │    ├── ML-driven scoring (pipeline)
-    │    ├── Context & Enrichment
-    │    │    ├── IP → ASN/Geo/ORG enrichment
-    │    │    ├── Asset & identity context (CMDB/IDP)
-    │    │    └── Threat intel feeds (IOC ingest)
-    │    ├── Correlation
-    │    │    ├── Multi-log source joins (User, Host, IP)
-    │    │    └── Timeline reconstruction
-    │    ├── Investigation UX
-    │         ├── Query interfaces (SIEM Search / SQL)
-    │         ├── Case Management (SOAR integration)
-    │         └── Visualization dashboards
-    │
-    ├── 4) Automation & Response
-    │    ├── SOAR playbooks
-    │    ├── Ticketing / Notification integration
-    │    ├── Containment workflow (block IP, disable account)
-    │
-    └── 5) Observability & Metrics
-         ├── Detection coverage map
-         ├── MTTA / MTTR
-         ├── False positive rate
-         └── Pipeline health & SLA
-```
 
-### Breakdown
+数据安全治理、安全分析自动化、可观测能力提升,同时以轻量方式探索AI辅助分析
+
+
+
+## 目标1：日志统一纳管与安全可观测性提升
+
+应用侧安全数据治理能力建设,建立日志统一接入标准，建立日志统一接入标准
+
+**成果指标**
+
+治理本质上是**制度 + 覆盖 + 效果 + 沉淀**
+
+| 指标类别     | example                              | 特点      |
+| -------- | --------------------------------------- | ------- |
+| **制度建设** | ● 权限治理流程SOP定稿<br>● 敏感数据访问审计方法建立         | 明确职责与闭环 |
+| **覆盖范围** | ● 纳入治理范围的关键系统≥X个<br>● 敏感操作审计覆盖核心系统      | 可视化成果   |
+| **效果提升** | ● 权限异常处置周期缩短≥Y%<br>● 审计问题发现-整改闭环率≥Z%    | 领导最关注   |
+| **能力沉淀** | ● 定期治理报告（季度）<br>● 数据安全知识库（≥N份 Playbook） | 形成可复制能力 |
+
+
+
 ---
+
+## 目标2：提升安全分析自动化能力
+
+高频人工流程脚本化,权限操作支持自动化能力,告警效果持续评估与优化
+
+**成果指标**
+
+* 高频运维分析流程**系统性识别与固化**
+* 自动化覆盖范围**逐步提升**（根据基线设定目标值）
+* 人工介入频次/时间**逐季下降**
+* 形成可复用策略模板和评估机制
+
+**行动计划**
+
+* 脚本化与策略固化
+* 公共流程抽象与复用
+* 指标评估体系建设（误报率、处置耗时等）
+
+---
+
+## 目标3：AI/ML辅助分析探索
+
+从日志洞察与告警解释入手,行为基线增强轻AI能力PoC,初步验证对运营效率的提升潜力
+
+**成果指标**
+
+* 完成至少**1个模型能力验证**
+* 建立针对告警效果的对比评估方法（规则 vs 模型）
+* 输出模型灰度上线可行性分析与路线图
+
+**行动计划**
+
+* 特征提取框架设计
+* 轻量级异常检测方法验证
+* 模型度量机制设计
+
+---
+
+## 能力发展
+
+* 完成现状基线报告与路线图
+* 内部知识/成果分享 ≥1
+* 初步可落地成果在试用期内展示
+
+---
+
+# ✨ 一句话总结
+
+> 以“现状基线 → 能力路线 → 分阶段迭代”为核心方法，
+> 推进安全运维从规则驱动向自动化与智能化演进，
+> 支撑数据下云、算力上云战略落地。
+
+---
+
+
+| 项目        | 依赖方   | 缓解方式          |
+| --------- | ----- | ------------- |
+| 日志接入范围    | 系统负责人 | 优先级体系 + 分阶段推进 |
+| 数据质量与延迟   | 平台团队  | 指标共建、持续评估     |
+| 模型PoC数据支持 | 全员配合  | 先小范围灰度，不影响生产  |
+
+
+---
+SIEM体系
+
+| Level | 体系状态 | 能力表现      | 目标阶段  |
+| ----- | ---- | --------- | ------ |
+| 0     | 无体系  | 零散日志      | ❌      |
+| 1     | 能运行  | 规则驱动、全靠手工 | 当前     |
+| 2     | 能运营  | 可观测、流程自动化 | TAGET  |
+| 3     | 能预警  | 模型辅助分析    | UPPER GOAL |
+
+---
+
 ```
-## 1️⃣ Security Data Collection
-- CloudTrail (API events)
-- VPC Flow Logs / DNS Logs / WAF / ELB Access logs
-- GuardDuty / Inspector / Macie Findings
-- OS / Syslog / EDR
-- Third-party network security logs (Firewall / IDS / Proxy)
-- Collection pattern
-  - Multi-account ingest (Organizations)
-  - Agentless / Syslog / Kinesis / Firehose
-  - Schema normalization (OCSF)
-
-## 2️⃣ Data Lake & Normalization
-- Amazon Security Lake
-  - Centralized S3 Data Lake
-  - Data partition by source/region/time
-  - Auto conversion → OCSF schema
-- Glue Data Catalog metadata
-
-## 3️⃣ Security Analytics (SIEM Functions)
-### A) Real-time / Rule-based Detection
-- Amazon OpenSearch Security Analytics
-  - Sigma rules + MITRE ATT&CK mapping
-  - Dashboards: login anomaly / API abuse / network threats
-### B) Historical Analytics
-- Athena
-  - Ad-hoc investigation / long-term reports
-  - Trend analysis / Compliance reporting
-
-## 4️⃣ Findings Aggregation
-- AWS Security Hub
-  - Findings normalization & deduplication
-  - Severity & compliance scoring
-  - Multi-source feed (GuardDuty + OpenSearch + 3rd-party)
-
-## 5️⃣ Automation & Response
-- EventBridge → Lambda / SSM / SOAR
-  - Auto disable IAM account
-  - Block malicious IP / WAF update
-  - Notification / Ticket creation
-
-## 6️⃣ External SIEM Integration (Optional)
-- Splunk / QRadar / Sumo Logic
-  - Security Lake Subscriber Model
-  - Pull OCSF logs from S3
-  - Write enriched findings back to Security Hub
-
+目标：提升安全运营能力
+│
+├── G1 应用侧可观测 & 治理闭环
+│   ├─ 敏感权限识别
+│   ├─ 日志统一接入
+│   └─ 闭环机制建立
+│
+├── G2 分析与自动化提效
+│   ├─ 权限运维自动化
+│   ├─ 告警关联分析
+│   └─ 处置耗时降低
+│
+└── G3 AI辅助分析探索
+    ├─ 日志洞察Agent
+    ├─ 行为基线增强
+    └─ 小范围灰度验证
 ```
 
-## 一句话：
-> 构建并完善公司 **SIEM 体系**，实现核心安全日志集中与统一治理，上线基础检测与响应能力。
 
-
-## Metrics
-| 方向      | 简易指标         |
-| ------- | -------------------- |
-| 集中 & 治理 | ≥5核心日志源接入并统一管理       |
-| 检测能力    | ≥5条真实有效的安全检测规则       |
-| 响应能力    | ≥1个高优先级告警响应流程跑通      |
-| 体系建设    | 顶层架构 + 数据目录 + 权限模型落地 |
+```
+应用侧安全可观测与治理闭环
+│
+├── 🔍 可观测性（日志集中）
+│   ├─ 日志接入标准
+│   ├─ 优先级系统纳管
+│   └─ 告警视图 & 指标
+│
+├── 🔐 安全治理闭环
+│   ├─ 敏感权限标定
+│   ├─ 异常操作审计
+│   └─ 整改跟踪与验证
+│
+├── ⚙ 分析与自动化
+│   ├─ 权限变更自动提示
+│   ├─ 高频分析脚本化
+│   └─ 告警评估与复盘机制
+│
+└── 🤖 AI辅助分析探索
+    ├─ 日志洞察与摘要
+    ├─ 行为基线增强
+    └─ 可回退的PoC验证
+```
