@@ -1,8 +1,6 @@
 
 1. Python 走 Focalboard **REST API**：`login → list teams → list boards → 按 title 找到 board_id → export board archive`
-2. 在 **10.21.13.51** 上用 **cron** 定时跑脚本，把 `.boardarchive` 写到 `/home/uat/opt/archive_boards/`
-
-这些 API 路径在 v2 里就是 `/api/v2/...`（standalone/personal server）。([Michał Karol][1])
+2. 在 虚机 上用 **cron** 定时跑脚本，把 `.boardarchive` 写到 `/home/uat/opt/archive_boards/`
 
 ---
 
